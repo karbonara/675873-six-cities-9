@@ -1,6 +1,6 @@
 import Header from '../header/header';
 import CitiesLinks from '../cities-links/cities-links';
-import Cities from '../cities/cities';
+import Main from '../main/main';
 type AppCitiesProps = {
   placesToStay: number;
 }
@@ -9,7 +9,7 @@ function App({ placesToStay }: AppCitiesProps): JSX.Element {
     <div>
       <Header />
       <CitiesLinks />
-      <Cities placesToStay={placesToStay} />
+      <Main placesToStay={placesToStay} />
     </div>
   );
 }

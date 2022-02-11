@@ -2,7 +2,7 @@ import CitiesCard from '../cities-card/cities-card';
 type CitiesProps = {
   placesToStay: number;
 }
-function Cities({ placesToStay }: CitiesProps): JSX.Element {
+function Main({ placesToStay }: CitiesProps): JSX.Element {
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -47,4 +47,4 @@ function Cities({ placesToStay }: CitiesProps): JSX.Element {
   );
 }
 
-export default Cities;
+export default Main;
