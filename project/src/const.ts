@@ -10,3 +10,6 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const HEIGHT_LOGO = 41;
+export const WIDTH_LOGO = 81;

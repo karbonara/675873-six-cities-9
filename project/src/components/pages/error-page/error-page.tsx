@@ -5,7 +5,7 @@ function ErrorPage(): JSX.Element {
     <div>
       <h1 className='error__page--title'>404 Not Found</h1>
       <Link className="error__page--link" to="/">
-        <span>Вернуться на главную</span>
+        Вернуться на главную
       </Link>
     </div>
   );

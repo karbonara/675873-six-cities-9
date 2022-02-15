@@ -1,9 +1,9 @@
 import CitiesCard from '../cities-card/cities-card';
 import CitiesLinks from '../cities-links/cities-links';
 type CitiesProps = {
-  placesToStay: number;
+  placesFound: number;
 }
-function Main({ placesToStay }: CitiesProps): JSX.Element {
+function Main({ placesFound }: CitiesProps): JSX.Element {
   return (
     <>
       <CitiesLinks />
@@ -11,7 +11,7 @@ function Main({ placesToStay }: CitiesProps): JSX.Element {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{placesToStay} places to stay in Amsterdam</b>
+            <b className="places__found">{placesFound} places to stay in Amsterdam</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}>
