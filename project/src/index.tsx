@@ -1,13 +1,15 @@
+import App from './components/app/app';
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app/app';
-
 const Setting = {
-  PLACES_TO_STAY: 324,
+  PLACES_FOUND: 324,
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <App placesToStay={Setting.PLACES_TO_STAY} />
+    <BrowserRouter>
+      <App placesFound={Setting.PLACES_FOUND} />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'));
