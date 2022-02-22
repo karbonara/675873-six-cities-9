@@ -7,10 +7,12 @@ import Main from '../main/main';
 import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import RoomOffer from '../pages/room-offer/room-offer';
+import { Offers } from '../../types/offer';
 type AppCitiesProps = {
   placesFound: number;
+  offers: Offers;
 }
-function App({ placesFound }: AppCitiesProps): JSX.Element {
+function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
     <div>
       <Routes>
