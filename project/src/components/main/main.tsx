@@ -1,4 +1,5 @@
-import CitiesCard from '../cities-card/cities-card';
+// import CitiesCard from '../cities-card/cities-card';
+import CardList from '../card-list/card-list';
 import CitiesLinks from '../cities-links/cities-links';
 import { Offer } from '../../types/offer';
 type CitiesProps = {
@@ -38,7 +39,7 @@ function Main({ placesFound, offers }: CitiesProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <CitiesCard offer={offers} />
+              <CardList offers={offers} />
             </div>
           </section>
           <div className="cities__right-section">
