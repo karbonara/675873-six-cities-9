@@ -10,7 +10,7 @@ import RoomOffer from '../pages/room-offer/room-offer';
 import { Offer } from '../../types/offer';
 type AppCitiesProps = {
   placesFound: number;
-  offers: Offer;
+  offers: Offer[];
 }
 function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
