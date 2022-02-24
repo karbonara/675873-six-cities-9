@@ -1,9 +1,11 @@
 import CitiesCard from '../cities-card/cities-card';
 import CitiesLinks from '../cities-links/cities-links';
+import { Offer } from '../../types/offer';
 type CitiesProps = {
   placesFound: number;
+  offers: Offer;
 }
-function Main({ placesFound }: CitiesProps): JSX.Element {
+function Main({ placesFound, offers }: CitiesProps): JSX.Element {
   return (
     <>
       <CitiesLinks />
@@ -36,10 +38,7 @@ function Main({ placesFound }: CitiesProps): JSX.Element {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              <CitiesCard />
-              <CitiesCard />
-              <CitiesCard />
-              <CitiesCard />
+              <CitiesCard offers={offers} />
             </div>
           </section>
           <div className="cities__right-section">

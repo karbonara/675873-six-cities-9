@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
-function CitiesCard(): JSX.Element {
-
+import { Offer } from '../../types/offer';
+type OfferProps = {
+  offers: Offer;
+};
+function CitiesCard({ offers }: OfferProps): JSX.Element {
+  // const { offer } = props;
+  const { title, price, previewImage } = offers;
   return (
     <div>
       <article className="cities__place-card place-card">
@@ -11,17 +16,17 @@ function CitiesCard(): JSX.Element {
           <Link to="offer/:id">
             <img
               className="place-card__image"
-              src="img/apartment-01.jpg"
+              src={previewImage}
               width={260}
               height={200}
-              alt="Place"
+              alt={title}
             />
           </Link>
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
             <div className="place-card__price">
-              <b className="place-card__price-value">€120</b>
+              <b className="place-card__price-value">{price}</b>
               <span className="place-card__price-text">/&nbsp;night</span>
             </div>
             <button
@@ -46,10 +51,10 @@ function CitiesCard(): JSX.Element {
           </div>
           <h2 className="place-card__name">
             <Link to="offer/:id">
-              Beautiful &amp; luxurious apartment at great location
+              {title}
             </Link>
           </h2>
-          <p className="place-card__type">Apartment</p>
+          <p className="place-card__type"></p>
         </div>
       </article>
     </div >

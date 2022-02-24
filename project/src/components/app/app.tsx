@@ -7,17 +7,17 @@ import Main from '../main/main';
 import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import RoomOffer from '../pages/room-offer/room-offer';
-import { Offers } from '../../types/offer';
+import { Offer } from '../../types/offer';
 type AppCitiesProps = {
   placesFound: number;
-  offers: Offers;
+  offers: Offer;
 }
 function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path={AppRoute.Root} element={<Main placesFound={placesFound} />} />
+          <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} />} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route path={AppRoute.Room} element={<RoomOffer />} />
           <Route
