@@ -6,7 +6,7 @@ type OfferListProps = {
 function CardList({ offers }: OfferListProps): JSX.Element {
   return (
     <>
-      {offers.map((offer, id) => (
+      {offers.map((offer) => (
         <CitiesCard offer={offer} key={offer.id} />
       ))}
     </>

@@ -1,9 +1,27 @@
-import { FormEvent } from 'react';
+import { useState, FormEvent } from 'react';
 
 function SubmitCommentForm(): JSX.Element {
+
+  const onClickSubmit = () => {
+    setFormData({
+      rating: formData.rating,
+      review: formData.review,
+    });
+  };
+
+  const [formData, setFormData] = useState({
+    rating: '',
+    review: '',
+  });
+
+  const fieldChangeHandle = (evt: FormEvent<EventTarget>) => {
+    const { name, value } = evt.target as HTMLInputElement;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post"
-      onSubmit={(evt: FormEvent<HTMLFormElement>) => {
+      onSubmit={(evt) => {
         evt.preventDefault();
       }}
     >
@@ -17,6 +35,8 @@ function SubmitCommentForm(): JSX.Element {
           defaultValue={5}
           id="5-stars"
           type="radio"
+          value={formData.rating}
+          onChange={() => fieldChangeHandle}
         />
         <label
           htmlFor="5-stars"
@@ -33,6 +53,8 @@ function SubmitCommentForm(): JSX.Element {
           defaultValue={4}
           id="4-stars"
           type="radio"
+          value={formData.rating}
+          onChange={() => fieldChangeHandle}
         />
         <label
           htmlFor="4-stars"
@@ -49,6 +71,8 @@ function SubmitCommentForm(): JSX.Element {
           defaultValue={3}
           id="3-stars"
           type="radio"
+          value={formData.rating}
+          onChange={() => fieldChangeHandle}
         />
         <label
           htmlFor="3-stars"
@@ -65,6 +89,8 @@ function SubmitCommentForm(): JSX.Element {
           defaultValue={2}
           id="2-stars"
           type="radio"
+          value={formData.rating}
+          onChange={() => fieldChangeHandle}
         />
         <label
           htmlFor="2-stars"
@@ -81,6 +107,8 @@ function SubmitCommentForm(): JSX.Element {
           defaultValue={1}
           id="1-star"
           type="radio"
+          value={formData.rating}
+          onChange={() => fieldChangeHandle}
         />
         <label
           htmlFor="1-star"
@@ -97,7 +125,8 @@ function SubmitCommentForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={''}
+        value={formData.review}
+        onChange={() => fieldChangeHandle}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -109,6 +138,7 @@ function SubmitCommentForm(): JSX.Element {
           className="reviews__submit form__submit button"
           type="submit"
           disabled
+          onClick={onClickSubmit}
         >
           Submit
         </button>
@@ -119,3 +149,4 @@ function SubmitCommentForm(): JSX.Element {
 }
 
 export default SubmitCommentForm;
+

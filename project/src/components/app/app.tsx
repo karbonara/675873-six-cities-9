@@ -8,9 +8,11 @@ import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import RoomOffer from '../pages/room-offer/room-offer';
 import { Offer } from '../../types/offer';
+// import { Favorite } from '../../types/favorites';
 type AppCitiesProps = {
   placesFound: number;
   offers: Offer[];
+  // favorites: Favorite[];
 }
 function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
