@@ -19,6 +19,8 @@ function SubmitCommentForm(): JSX.Element {
     setFormData({ ...formData, [name]: value });
   };
 
+  const isFormDisabled = () => !!formData.rating && !!formData.review;
+
   return (
     <form className="reviews__form form" action="#" method="post"
       onSubmit={(evt) => {
@@ -32,11 +34,10 @@ function SubmitCommentForm(): JSX.Element {
         <input
           className="form__rating-input visually-hidden"
           name="rating"
-          defaultValue={5}
           id="5-stars"
           type="radio"
-          value={formData.rating}
-          onChange={() => fieldChangeHandle}
+          value='5'
+          onChange={fieldChangeHandle}
         />
         <label
           htmlFor="5-stars"
@@ -50,11 +51,10 @@ function SubmitCommentForm(): JSX.Element {
         <input
           className="form__rating-input visually-hidden"
           name="rating"
-          defaultValue={4}
           id="4-stars"
           type="radio"
-          value={formData.rating}
-          onChange={() => fieldChangeHandle}
+          value='4'
+          onChange={fieldChangeHandle}
         />
         <label
           htmlFor="4-stars"
@@ -68,11 +68,10 @@ function SubmitCommentForm(): JSX.Element {
         <input
           className="form__rating-input visually-hidden"
           name="rating"
-          defaultValue={3}
           id="3-stars"
           type="radio"
-          value={formData.rating}
-          onChange={() => fieldChangeHandle}
+          value='3'
+          onChange={fieldChangeHandle}
         />
         <label
           htmlFor="3-stars"
@@ -86,11 +85,10 @@ function SubmitCommentForm(): JSX.Element {
         <input
           className="form__rating-input visually-hidden"
           name="rating"
-          defaultValue={2}
           id="2-stars"
           type="radio"
-          value={formData.rating}
-          onChange={() => fieldChangeHandle}
+          value='2'
+          onChange={fieldChangeHandle}
         />
         <label
           htmlFor="2-stars"
@@ -104,11 +102,10 @@ function SubmitCommentForm(): JSX.Element {
         <input
           className="form__rating-input visually-hidden"
           name="rating"
-          defaultValue={1}
           id="1-star"
           type="radio"
-          value={formData.rating}
-          onChange={() => fieldChangeHandle}
+          value='1'
+          onChange={fieldChangeHandle}
         />
         <label
           htmlFor="1-star"
@@ -126,7 +123,7 @@ function SubmitCommentForm(): JSX.Element {
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
         value={formData.review}
-        onChange={() => fieldChangeHandle}
+        onChange={fieldChangeHandle}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
@@ -137,7 +134,7 @@ function SubmitCommentForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled
+          disabled={!isFormDisabled()}
           onClick={onClickSubmit}
         >
           Submit
