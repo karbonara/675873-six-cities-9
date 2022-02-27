@@ -20,7 +20,11 @@ export const offers: Offer[] = [
       name: 'Angelina',
     },
     id: 1,
-    images: [`${AVATAR_URL}?rnd=${Math.random()}`],
+    images: [
+      'img/apartment-03.jpg',
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+    ],
     isFavorite: true,
     isPremium: false,
     location: {

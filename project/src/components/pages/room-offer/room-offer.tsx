@@ -1,56 +1,26 @@
 import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
+import ReviewsComments from './reviews-comments/reviews-comments';
 import { Offer } from '../../../types/offer';
 type OfferProps = {
   offer: Offer;
 };
 function RoomOffer({ offer }: OfferProps): JSX.Element {
-  const { description, host, price, title, maxAdults, bedrooms, type, rating } = offer;
+  const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
   return (
     <>
       <section className="property">
         <div className="property__gallery-container container">
           <div className="property__gallery">
             <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/room.jpg"
-                alt="studio"
-              />
-            </div>
-            <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/apartment-01.jpg"
-                alt="studio"
-              />
-            </div>
-            <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/apartment-02.jpg"
-                alt="studio"
-              />
-            </div>
-            <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/apartment-03.jpg"
-                alt="studio"
-              />
-            </div>
-            <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/studio-01.jpg"
-                alt="studio"
-              />
-            </div>
-            <div className="property__image-wrapper">
-              <img
-                className="property__image"
-                src="img/apartment-01.jpg"
-                alt="studio"
-              />
+              {
+                offer.images.map((img) => (
+                  <img key={img}
+                    className="property__image"
+                    src={img}
+                    alt={title}
+                  />
+                ))
+              }
             </div>
           </div>
         </div>
@@ -95,16 +65,13 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
             <div className="property__inside">
               <h2 className="property__inside-title">What`s inside</h2>
               <ul className="property__inside-list">
-                <li className="property__inside-item">Wi-Fi</li>
-                <li className="property__inside-item">Washing machine</li>
-                <li className="property__inside-item">Towels</li>
-                <li className="property__inside-item">Heating</li>
-                <li className="property__inside-item">Coffee machine</li>
-                <li className="property__inside-item">Baby seat</li>
-                <li className="property__inside-item">Kitchen</li>
-                <li className="property__inside-item">Dishwasher</li>
-                <li className="property__inside-item">Cabel TV</li>
-                <li className="property__inside-item">Fridge</li>
+                {
+                  offer.goods.map((insides) => (
+                    <li key={insides} className="property__inside-item">
+                      {insides}
+                    </li>
+                  ))
+                }
               </ul>
             </div>
             <div className="property__host">
@@ -132,38 +99,7 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
               <h2 className="reviews__title">
                 Reviews · <span className="reviews__amount">1</span>
               </h2>
-              <ul className="reviews__list">
-                <li className="reviews__item">
-                  <div className="reviews__user user">
-                    <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                      <img
-                        className="reviews__avatar user__avatar"
-                        src="img/avatar-max.jpg"
-                        width={54}
-                        height={54}
-                        alt="Reviews avatar"
-                      />
-                    </div>
-                    <span className="reviews__user-name">Max</span>
-                  </div>
-                  <div className="reviews__info">
-                    <div className="reviews__rating rating">
-                      <div className="reviews__stars rating__stars">
-                        <span style={{ width: '80%' }} />
-                        <span className="visually-hidden">Rating</span>
-                      </div>
-                    </div>
-                    <p className="reviews__text">
-                      A quiet cozy and picturesque that hides behind a a river by the
-                      unique lightness of Amsterdam. The building is green and from
-                      18th century.
-                    </p>
-                    <time className="reviews__time" dateTime="2019-04-24">
-                      April 2019
-                    </time>
-                  </div>
-                </li>
-              </ul>
+              <ReviewsComments />
               <SubmitCommentForm />
             </section>
           </div>
