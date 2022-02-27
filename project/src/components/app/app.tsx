@@ -21,7 +21,7 @@ function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
         <Route path='/' element={<Layout />}>
           <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} />} />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<RoomOffer />} />
+          <Route path={AppRoute.Room} element={<RoomOffer offers={offers} />} />
           <Route
             path={AppRoute.Favorites}
             element={
