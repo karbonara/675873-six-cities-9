@@ -1,4 +1,3 @@
-// import CitiesCard from '../cities-card/cities-card';
 import CardList from '../card-list/card-list';
 import CitiesLinks from '../cities-links/cities-links';
 import { Offer } from '../../types/offer';

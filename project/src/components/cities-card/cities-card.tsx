@@ -4,14 +4,17 @@ type OfferProps = {
   offer: Offer;
 };
 function CitiesCard({ offer }: OfferProps): JSX.Element {
-  const { type, price, previewImage, title } = offer;
+  const { type, price, previewImage, title, rating } = offer;
   return (
     <article className="cities__place-card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+      {
+        offer.isPremium &&
+        <div className="place-card__mark">
+          <span>Premium</span>
+        </div>
+      }
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to="offer/:id">
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -43,7 +46,7 @@ function CitiesCard({ offer }: OfferProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: '80%' }} />
+            <span style={{ width: `${rating * 20}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

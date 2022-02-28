@@ -1,34 +1,38 @@
 import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
 import ReviewsComments from './reviews-comments/reviews-comments';
 import { Offer } from '../../../types/offer';
+// import { useParams } from 'react-router-dom';
 type OfferProps = {
   offer: Offer;
 };
 function RoomOffer({ offer }: OfferProps): JSX.Element {
+  // const params = useParams();
+  // const id = Number(params.id);
+
   const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
   return (
     <>
-      <section className="property">
+      <section className="property" >
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            <div className="property__image-wrapper">
-              {
-                offer.images.map((img) => (
-                  <img key={img}
-                    className="property__image"
-                    src={img}
-                    alt={title}
-                  />
-                ))
-              }
-            </div>
+            {offer.images.map((img) => (
+              <div
+                key={img}
+                className="property__image-wrapper"
+              >
+                <img className="property__image" src={img} alt={title} />
+              </div>
+            ))}
           </div>
         </div>
         <div className="property__container container">
           <div className="property__wrapper">
-            <div className="property__mark">
-              <span>Premium</span>
-            </div>
+            {
+              offer.isPremium &&
+              <div className="property__mark">
+                <span>Premium</span>
+              </div>
+            }
             <div className="property__name-wrapper">
               <h1 className="property__name">
                 {title}
@@ -42,7 +46,7 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
-                <span style={{ width: '80%' }} />
+                <span style={{ width: `${rating * 20}%` }} />
                 <span className="visually-hidden">Rating</span>
               </div>
               <span className="property__rating-value rating__value">{rating}</span>
@@ -87,7 +91,10 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
                   />
                 </div>
                 <span className="property__user-name">{host.name}</span>
-                <span className="property__user-status">Pro</span>
+                {
+                  offer.host.isPro &&
+                  <span className="property__user-status">Pro</span>
+                }
               </div>
               <div className="property__description">
                 <p className="property__text">
@@ -116,6 +123,7 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
       </div>
 
     </>
+
   );
 }
 

@@ -16,7 +16,7 @@ export const offers: Offer[] = [
     host: {
       avatarUrl: `${AVATAR_URL}`,
       id: 1,
-      isPro: true,
+      isPro: false,
       name: 'Angelina',
     },
     id: 1,
@@ -26,7 +26,7 @@ export const offers: Offer[] = [
       'img/apartment-02.jpg',
     ],
     isFavorite: true,
-    isPremium: false,
+    isPremium: true,
     location: {
       latitude: 52.35514938496378,
       longitude: 4.673877537499948,
@@ -50,7 +50,7 @@ export const offers: Offer[] = [
       name: 'Amsterdam',
     },
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
-    goods: ['Heating'],
+    goods: ['Heating', 'WI-FI'],
     host: {
       avatarUrl: `${AVATAR_URL}`,
       id: 1,
@@ -58,7 +58,11 @@ export const offers: Offer[] = [
       name: 'Artem',
     },
     id: 2,
-    images: [`${AVATAR_URL}?rnd=${Math.random()}`],
+    images: [
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+    ],
     isFavorite: true,
     isPremium: false,
     location: {
@@ -71,6 +75,44 @@ export const offers: Offer[] = [
     price: 60,
     rating: 2.8,
     title: 'Room',
+    type: 'room',
+  },
+  {
+    bedrooms: 3,
+    city: {
+      location: {
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10,
+      },
+      name: 'Amsterdam',
+    },
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
+    goods: ['Heating', 'WI-FI'],
+    host: {
+      avatarUrl: `${AVATAR_URL}`,
+      id: 1,
+      isPro: true,
+      name: 'Artem',
+    },
+    id: 3,
+    images: [
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg',
+    ],
+    isFavorite: true,
+    isPremium: false,
+    location: {
+      latitude: 52.35514938496378,
+      longitude: 4.673877537499948,
+      zoom: 8,
+    },
+    maxAdults: 4,
+    previewImage: 'img/apartment-01.jpg',
+    price: 160,
+    rating: 5,
+    title: 'Room 3',
     type: 'room',
   },
 

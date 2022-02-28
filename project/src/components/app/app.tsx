@@ -6,13 +6,11 @@ import Login from '../pages/login/login';
 import Main from '../main/main';
 import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
-import RoomOffer from '../pages/room-offer/room-offer';
+import RoomOfferList from '../pages/room-offer/room-offer-list';
 import { Offer } from '../../types/offer';
-// import { Favorite } from '../../types/favorites';
 type AppCitiesProps = {
   placesFound: number;
   offers: Offer[];
-  // favorites: Favorite[];
 }
 function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
@@ -21,7 +19,7 @@ function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
         <Route path='/' element={<Layout />}>
           <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} />} />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<RoomOffer offers={offers} />} />
+          <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} />} />
           <Route
             path={AppRoute.Favorites}
             element={
