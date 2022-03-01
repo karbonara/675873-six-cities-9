@@ -1,14 +1,10 @@
-import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
-import ReviewsComments from './reviews-comments/reviews-comments';
 import { Offer } from '../../../types/offer';
-// import { useParams } from 'react-router-dom';
+import ReviewsComments from './reviews-comments/reviews-comments';
+import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
 type OfferProps = {
   offer: Offer;
 };
 function RoomOffer({ offer }: OfferProps): JSX.Element {
-  // const params = useParams();
-  // const id = Number(params.id);
-
   const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
   return (
     <>

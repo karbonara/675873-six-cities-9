@@ -1,9 +1,9 @@
 import FavoritesList from '../favorites-list/favorites-list';
-import { Favorite } from '../../types/favorites';
+import { Offer } from '../../types/offer';
 type FavoriteProps = {
-  favorites: Favorite[];
+  offer: Offer[];
 };
-function FavoritesCard({ favorites }: FavoriteProps): JSX.Element {
+function FavoritesCard({ offer }: FavoriteProps): JSX.Element {
   return (
     <main className="page__main page__main--favorites">
       <div className="page__favorites-container container">
@@ -11,7 +11,7 @@ function FavoritesCard({ favorites }: FavoriteProps): JSX.Element {
           <h1 className="favorites__title">Saved listing</h1>
           <ul className="favorites__list">
             {
-              favorites.map((item) => <FavoritesList key={item.id} favorites={item} />)
+              offer.map((item) => <FavoritesList key={item.id} offer={item} />)
             }
           </ul>
         </section>

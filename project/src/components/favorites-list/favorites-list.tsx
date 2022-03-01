@@ -1,15 +1,15 @@
-import { Favorite } from '../../types/favorites';
+import { Offer } from '../../types/offer';
 type FavoriteProps = {
-  favorites: Favorite;
+  offer: Offer;
 };
-function FavoritesList({ favorites }: FavoriteProps): JSX.Element {
-  const { city, previewImage, title, price } = favorites;
+function FavoritesList({ offer }: FavoriteProps): JSX.Element {
+  const { title, price, city, previewImage } = offer;
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
         <div className="locations__item">
           <a className="locations__item-link" href="/">
-            <span>{city}</span>
+            <span>{city.name}</span>
           </a>
         </div>
       </div>
