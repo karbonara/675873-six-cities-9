@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
+import { STYLE_RATING } from '../../const';
+
 type OfferProps = {
   offer: Offer;
 };
+
 function CitiesCard({ offer }: OfferProps): JSX.Element {
   const { type, price, previewImage, title, rating } = offer;
   return (
@@ -46,7 +49,7 @@ function CitiesCard({ offer }: OfferProps): JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${rating * 20}%` }} />
+            <span style={{ width: `${rating * STYLE_RATING}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

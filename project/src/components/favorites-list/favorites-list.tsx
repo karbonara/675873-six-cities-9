@@ -1,7 +1,9 @@
 import { Offer } from '../../types/offer';
+
 type FavoriteProps = {
   offer: Offer;
 };
+
 function FavoritesList({ offer }: FavoriteProps): JSX.Element {
   const { title, price, city, previewImage } = offer;
   return (

@@ -8,10 +8,12 @@ import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
+
 type AppCitiesProps = {
   placesFound: number;
   offers: Offer[];
 }
+
 function App({ placesFound, offers }: AppCitiesProps): JSX.Element {
   return (
     <div>

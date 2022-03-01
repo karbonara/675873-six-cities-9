@@ -1,10 +1,12 @@
 import CardList from '../card-list/card-list';
 import CitiesLinks from '../cities-links/cities-links';
 import { Offer } from '../../types/offer';
+
 type CitiesProps = {
   placesFound: number;
   offers: Offer[];
 }
+
 function Main({ placesFound, offers }: CitiesProps): JSX.Element {
   return (
     <>

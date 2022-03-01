@@ -13,3 +13,4 @@ export enum AuthorizationStatus {
 
 export const HEIGHT_LOGO = 41;
 export const WIDTH_LOGO = 81;
+export const STYLE_RATING = 20;

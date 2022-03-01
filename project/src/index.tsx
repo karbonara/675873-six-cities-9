@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { offers } from './mocks/offers';
+
 const Setting = {
   PLACES_FOUND: 324,
 };
