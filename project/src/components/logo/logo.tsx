@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HEIGHT_LOGO, WIDTH_LOGO } from '../../const';
+
 function Logo(): JSX.Element {
   return (
     <Link className="header__logo-link header__logo-link--active" to="/">
