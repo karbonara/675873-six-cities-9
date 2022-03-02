@@ -1,9 +1,11 @@
 import { Offer } from '../../../types/offer';
 import ReviewsComments from './reviews-comments/reviews-comments';
 import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
+
 type OfferProps = {
   offer: Offer;
 };
+
 function RoomOffer({ offer }: OfferProps): JSX.Element {
   const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
   return (

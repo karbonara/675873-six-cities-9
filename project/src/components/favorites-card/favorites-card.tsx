@@ -1,8 +1,10 @@
 import FavoritesList from '../favorites-list/favorites-list';
 import { Offer } from '../../types/offer';
+
 type FavoriteProps = {
   offer: Offer[];
 };
+
 function FavoritesCard({ offer }: FavoriteProps): JSX.Element {
   return (
     <main className="page__main page__main--favorites">
