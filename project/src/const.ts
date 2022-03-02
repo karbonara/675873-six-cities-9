@@ -17,3 +17,5 @@ export const STYLE_RATING = 20;
 export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
 export const URL_MARKER_CURRENT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
 export const MAP_HEIGHT = '900px';
+export const ICON_SIZE = 40;
+export const ICON_ANCHOR = 20;
