@@ -3,7 +3,8 @@ import CitiesLinks from '../cities-links/cities-links';
 import Map from '../map/map';
 import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
-import { City, Points } from '../../types/types';
+import React, { useState } from 'react';
+import { City, Points, Point } from '../../types/types';
 
 type CitiesProps = {
   placesFound: number;
@@ -13,6 +14,10 @@ type CitiesProps = {
 }
 
 function Main({ placesFound, offers, city, points }: CitiesProps): JSX.Element {
+
+  const [selectedPoint] = useState<Point | undefined>(
+    undefined,
+  );
 
   return (
     <>
@@ -29,7 +34,7 @@ function Main({ placesFound, offers, city, points }: CitiesProps): JSX.Element {
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map city={city} points={points} />
+              <Map city={city} points={points} selectedPoint={selectedPoint} />
             </section>
           </div>
         </div>

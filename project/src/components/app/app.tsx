@@ -8,7 +8,6 @@ import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
-
 import { City, Points } from '../../types/types';
 
 type AppCitiesProps = {
