@@ -1,12 +1,15 @@
 import { Offer } from '../../../types/offer';
-import ReviewsComments from './reviews-comments/reviews-comments';
+import ReviewsCommentsList from './reviews-comments-list/reviews-comments-list';
 import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
+import { Comment } from '../../../types/comment';
+import { STYLE_RATING } from '../../../const';
 
 type OfferProps = {
   offer: Offer;
+  comments: Comment[];
 };
 
-function RoomOffer({ offer }: OfferProps): JSX.Element {
+function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
   const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
   return (
     <>
@@ -44,7 +47,7 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
-                <span style={{ width: `${rating * 20}%` }} />
+                <span style={{ width: `${rating * STYLE_RATING}%` }} />
                 <span className="visually-hidden">Rating</span>
               </div>
               <span className="property__rating-value rating__value">{rating}</span>
@@ -104,7 +107,7 @@ function RoomOffer({ offer }: OfferProps): JSX.Element {
               <h2 className="reviews__title">
                 Reviews · <span className="reviews__amount">1</span>
               </h2>
-              <ReviewsComments />
+              <ReviewsCommentsList comments={comments} />
               <SubmitCommentForm />
             </section>
           </div>

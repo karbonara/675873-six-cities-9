@@ -9,22 +9,24 @@ import { Route, Routes } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
 import { City, Points } from '../../types/types';
+import { Comment } from '../../types/comment';
 
 type AppCitiesProps = {
   placesFound: number;
   offers: Offer[];
   city: City;
   points: Points;
+  comments: Comment[];
 }
 
-function App({ placesFound, offers, city, points }: AppCitiesProps): JSX.Element {
+function App({ placesFound, offers, city, points, comments }: AppCitiesProps): JSX.Element {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} city={city} points={points} />} />
           <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} />} />
+          <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} comments={comments} />} />
           <Route
             path={AppRoute.Favorites}
             element={
