@@ -3,7 +3,7 @@ import CitiesLinks from '../cities-links/cities-links';
 import Map from '../map/map';
 import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { City, Points, Point } from '../../types/types';
 
 type CitiesProps = {

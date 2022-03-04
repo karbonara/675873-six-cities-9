@@ -2,21 +2,32 @@ import { Offer } from '../../../types/offer';
 import ReviewsCommentsList from './reviews-comments-list/reviews-comments-list';
 import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
 import { Comment } from '../../../types/comment';
-import { STYLE_RATING } from '../../../const';
+import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../const';
+import Map from '../../map/map';
+import { City, Points, Point } from '../../../types/types';
+import { useState } from 'react';
+import CardList from '../../card-list/card-list';
 
 type OfferProps = {
-  offer: Offer;
+  offers: Offer;
   comments: Comment[];
+  city: City;
+  points: Points;
 };
 
-function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
-  const { host, description, price, title, maxAdults, bedrooms, type, rating } = offer;
+function RoomOffer({ offers, comments, city, points }: OfferProps): JSX.Element {
+  const { host, description, price, title, maxAdults, bedrooms, type, rating } = offers;
+
+  const [selectedPoint] = useState<Point | undefined>(
+    undefined,
+  );
+
   return (
     <>
       <section className="property" >
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            {offer.images.map((img) => (
+            {offers.images.map((img) => (
               <div
                 key={img}
                 className="property__image-wrapper"
@@ -29,7 +40,7 @@ function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
         <div className="property__container container">
           <div className="property__wrapper">
             {
-              offer.isPremium &&
+              offers.isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
               </div>
@@ -71,7 +82,7 @@ function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
               <h2 className="property__inside-title">What`s inside</h2>
               <ul className="property__inside-list">
                 {
-                  offer.goods.map((insides) => (
+                  offers.goods.map((insides) => (
                     <li key={insides} className="property__inside-item">
                       {insides}
                     </li>
@@ -86,14 +97,14 @@ function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
                   <img
                     className="property__avatar user__avatar"
                     src={host.avatarUrl}
-                    width={74}
-                    height={74}
+                    width={PROPERTY_USER_AVATAR}
+                    height={PROPERTY_USER_AVATAR}
                     alt={host.name}
                   />
                 </div>
                 <span className="property__user-name">{host.name}</span>
                 {
-                  offer.host.isPro &&
+                  offers.host.isPro &&
                   <span className="property__user-status">Pro</span>
                 }
               </div>
@@ -112,13 +123,15 @@ function RoomOffer({ offer, comments }: OfferProps): JSX.Element {
             </section>
           </div>
         </div>
-        <section className="property__map map" />
+        <section className="property__map map">
+          <Map city={city} points={points} selectedPoint={selectedPoint} />
+        </section>
       </section>
       <div className="container">
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-
+            <CardList offers={offers} />
           </div>
         </section>
       </div>

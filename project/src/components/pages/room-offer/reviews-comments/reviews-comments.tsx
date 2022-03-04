@@ -1,5 +1,5 @@
 import { Comment } from '../../../../types/comment';
-import { STYLE_RATING } from '../../../../const';
+import { STYLE_RATING, REVIEWS_USER_AVATAR } from '../../../../const';
 
 type CommentProps = {
   comments: Comment;
@@ -14,9 +14,9 @@ function ReviewsComments({ comments }: CommentProps): JSX.Element {
           <img
             className="reviews__avatar user__avatar"
             src={user.avatarUrl}
-            width={54}
-            height={54}
-            alt="Reviews avatar"
+            width={REVIEWS_USER_AVATAR}
+            height={REVIEWS_USER_AVATAR}
+            alt={user.name}
           />
         </div>
         <span className="reviews__user-name">{user.name}</span>
