@@ -14,7 +14,7 @@ function RoomOfferList({ offers, comments, city, points }: OfferListProps): JSX.
   return (
     <>
       {offers.map((offer) => (
-        <RoomOffer offers={offer} key={offer.id} comments={comments} city={city} points={points} />
+        <RoomOffer offers={offers} key={offer.id} city={city} points={points} comments={comments} />
       ))}
     </>
   );
