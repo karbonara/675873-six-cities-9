@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { offers } from './mocks/offers';
 import { CITY } from './mocks/city';
 import { POINTS } from './mocks/points';
+import { comments } from './mocks/comments';
 
 const Setting = {
   PLACES_FOUND: 324,
@@ -18,6 +19,7 @@ ReactDOM.render(
         offers={offers}
         points={POINTS}
         city={CITY}
+        comments={comments}
       />
     </BrowserRouter>
   </React.StrictMode>,
