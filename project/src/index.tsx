@@ -1,11 +1,13 @@
 import App from './components/app/app';
 import { BrowserRouter } from 'react-router-dom';
+import { CITY } from './mocks/city';
+import { comments } from './mocks/comments';
+import { offers } from './mocks/offers';
+import { Provider } from 'react-redux';
+import { POINTS } from './mocks/points';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { offers } from './mocks/offers';
-import { CITY } from './mocks/city';
-import { POINTS } from './mocks/points';
-import { comments } from './mocks/comments';
+import { store } from './store';
 
 const Setting = {
   PLACES_FOUND: 324,
@@ -14,13 +16,15 @@ const Setting = {
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App
-        placesFound={Setting.PLACES_FOUND}
-        offers={offers}
-        points={POINTS}
-        city={CITY}
-        comments={comments}
-      />
+      <Provider store={store}>
+        <App
+          placesFound={Setting.PLACES_FOUND}
+          offers={offers}
+          points={POINTS}
+          city={CITY}
+          comments={comments}
+        />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'));
