@@ -8,6 +8,7 @@ import { POINTS } from './mocks/points';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
+import { CityTabs } from './const';
 
 const Setting = {
   PLACES_FOUND: 324,
@@ -23,6 +24,7 @@ ReactDOM.render(
           points={POINTS}
           city={CITY}
           comments={comments}
+          cityTabs={CityTabs}
         />
       </Provider>
     </BrowserRouter>

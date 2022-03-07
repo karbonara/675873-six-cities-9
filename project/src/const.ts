@@ -11,6 +11,15 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum CityTabs {
+  Paris = 'Paris',
+  Cologne = 'Cologne',
+  Brussels = 'Brussels',
+  Amsterdam = 'Amsterdam',
+  Hamburg = 'Hamburg',
+  Dusseldorf = 'Dusseldorf',
+}
+
 export const AVATAR_URL = 'https://i.pravatar.cc/128';
 export const HEIGHT_LOGO = 41;
 export const WIDTH_LOGO = 81;

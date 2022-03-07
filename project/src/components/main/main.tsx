@@ -5,15 +5,17 @@ import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
 import { useState } from 'react';
 import { City, Points, Point } from '../../types/types';
+import { CityTabs } from '../../const';
 
 type CitiesProps = {
   placesFound: number;
   offers: Offer[];
   city: City;
   points: Points;
+  cityTabs: typeof CityTabs;
 }
 
-function Main({ placesFound, offers, city, points }: CitiesProps): JSX.Element {
+function Main({ placesFound, offers, city, points, cityTabs }: CitiesProps): JSX.Element {
 
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
@@ -21,7 +23,7 @@ function Main({ placesFound, offers, city, points }: CitiesProps): JSX.Element {
 
   return (
     <>
-      <CitiesLinks />
+      <CitiesLinks cityTabs={cityTabs} />
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
