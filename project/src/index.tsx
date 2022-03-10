@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import { POINTS } from './mocks/points';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { store } from './store';
-import { CityTabs } from './const';
+import store from './store';
+import { CityTabs, SortPopup } from './const';
 
 const Setting = {
   PLACES_FOUND: 324,
@@ -25,6 +25,7 @@ ReactDOM.render(
           city={CITY}
           comments={comments}
           cityTabs={CityTabs}
+          sortPopup={SortPopup}
         />
       </Provider>
     </BrowserRouter>

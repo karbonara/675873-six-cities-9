@@ -5,7 +5,7 @@ import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
 import { useState } from 'react';
 import { City, Points, Point } from '../../types/types';
-import { CityTabs } from '../../const';
+import { CityTabs, SortPopup } from '../../const';
 
 type CitiesProps = {
   placesFound: number;
@@ -13,9 +13,10 @@ type CitiesProps = {
   city: City;
   points: Points;
   cityTabs: typeof CityTabs;
+  sortPopup: typeof SortPopup;
 }
 
-function Main({ placesFound, offers, city, points, cityTabs }: CitiesProps): JSX.Element {
+function Main({ placesFound, offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
 
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
@@ -29,7 +30,7 @@ function Main({ placesFound, offers, city, points, cityTabs }: CitiesProps): JSX
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
             <b className="places__found">{placesFound} places to stay in Amsterdam</b>
-            <PlacesSorting />
+            <PlacesSorting sortPopup={SortPopup} />
             <div className="cities__places-list places__list tabs__content">
               <CardList offers={offers} />
             </div>

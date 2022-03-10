@@ -20,6 +20,15 @@ export enum CityTabs {
   Dusseldorf = 'Dusseldorf',
 }
 
+// export enum SortPopup {
+//   Popular = 'Popular',
+//   PriceHigh = 'Price: low to high',
+//   PriceLow = 'Price: high to low',
+//   Top = 'Top rated first',
+// }
+
+export const SortPopup = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+
 export const AVATAR_URL = 'https://i.pravatar.cc/128';
 export const HEIGHT_LOGO = 41;
 export const WIDTH_LOGO = 81;
