@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { citysStep } from './action';
+import { citysStep } from '../action';
 
 const STEP_COUNT = 1;
 
