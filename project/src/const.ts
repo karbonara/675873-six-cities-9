@@ -11,22 +11,7 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export enum CityTabs {
-  Paris = 'Paris',
-  Cologne = 'Cologne',
-  Brussels = 'Brussels',
-  Amsterdam = 'Amsterdam',
-  Hamburg = 'Hamburg',
-  Dusseldorf = 'Dusseldorf',
-}
-
-// export enum SortPopup {
-//   Popular = 'Popular',
-//   PriceHigh = 'Price: low to high',
-//   PriceLow = 'Price: high to low',
-//   Top = 'Top rated first',
-// }
-
+export const CityTabs = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 export const SortPopup = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
 export const AVATAR_URL = 'https://i.pravatar.cc/128';

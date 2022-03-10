@@ -1,3 +1,4 @@
+import { SetStateAction, useState } from 'react';
 import { CityTabs } from '../../const';
 // import { useAppDispatch, useAppSelector } from '../../hooks';
 
@@ -6,6 +7,12 @@ type CityProps = {
 }
 
 function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
+
+  const [activeItem, setActiveItem] = useState(0);
+
+  const onSelectItem = (index: SetStateAction<number>) => {
+    setActiveItem(index);
+  };
 
   // const { step, mistakes } = useAppSelector((state) => state);
 
@@ -18,9 +25,9 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
       <section className="locations container">
         <ul className="locations__list tabs__list">
           {
-            Object.keys(cityTabs).map((cities) => (
-              <li key={cities} className="locations__item">
-                <a className="locations__item-link tabs__item" href="/">
+            cityTabs.map((cities, index) => (
+              <li key={cities} className="locations__item" >
+                <a onClick={() => onSelectItem(index)} className={activeItem === index ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'} href="#locations">
                   <span>{cities}</span>
                 </a>
               </li>
@@ -28,7 +35,7 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
           }
         </ul>
       </section>
-    </div>
+    </div >
   );
 }
 
