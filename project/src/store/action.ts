@@ -1,9 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const citysStep = createAction('tabs/cityChangeStep');
-export const offerList = createAction('offer/offerList');
-
-export const setCitysStep = (catIndex: never) => ({
-  type: 'SET_CITY',
-  payload: catIndex,
-});
+export const citysStep = createAction('cityName');
+export const offerList = createAction('offersList');

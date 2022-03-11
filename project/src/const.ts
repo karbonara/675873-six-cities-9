@@ -13,6 +13,7 @@ export enum AuthorizationStatus {
 
 export const CityTabs = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 export const SortPopup = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
+export const DEFAULT_CITY = CityTabs[0];
 
 export const AVATAR_URL = 'https://i.pravatar.cc/128';
 export const HEIGHT_LOGO = 41;
