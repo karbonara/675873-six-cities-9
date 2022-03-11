@@ -12,7 +12,6 @@ import { City, Points } from '../../types/types';
 import { Comment } from '../../types/comment';
 
 type AppCitiesProps = {
-  placesFound: number;
   offers: Offer[];
   city: City;
   points: Points;
@@ -21,12 +20,12 @@ type AppCitiesProps = {
   sortPopup: typeof SortPopup;
 }
 
-function App({ placesFound, offers, city, points, comments, cityTabs, sortPopup }: AppCitiesProps): JSX.Element {
+function App({ offers, city, points, comments, cityTabs, sortPopup }: AppCitiesProps): JSX.Element {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} city={city} points={points} cityTabs={cityTabs} sortPopup={SortPopup} />} />
+          <Route path={AppRoute.Root} element={<Main offers={offers} city={city} points={points} cityTabs={cityTabs} sortPopup={SortPopup} />} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} comments={comments} city={city} points={points} />} />
           <Route

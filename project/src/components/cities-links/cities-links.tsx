@@ -1,6 +1,6 @@
+import { CityTabs } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { useState } from 'react';
-import { CityTabs } from '../../const';
 import { setCityName } from '../../store/reducer/city-reducer';
 
 type CityProps = {
@@ -12,6 +12,8 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
   const [activeItem, setActiveItem] = useState(0);
 
   const dispatch = useAppDispatch();
+
+  // const { city, offers } = useAppSelector((state) => state);
 
   const handleClick = (cityName: string, index: number) => {
     dispatch(setCityName(cityName));
@@ -25,7 +27,7 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
           {
             cityTabs.map((cities, index) => (
               <li key={cities} className="locations__item" onClick={() => handleClick(cities, index)} >
-                <a className={activeItem === index ? 'locations__item-link tabs__item tabs__item--active' : 'locations__item-link tabs__item'} href="#locations">
+                <a className={`locations__item-link ${activeItem === index ? ' tabs__item tabs__item--active' : 'locations__item-link tabs__item'}`} href="#locations">
                   <span>{cities}</span>
                 </a>
               </li>
@@ -33,7 +35,7 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
           }
         </ul>
       </section>
-    </div >
+    </div>
   );
 }
 

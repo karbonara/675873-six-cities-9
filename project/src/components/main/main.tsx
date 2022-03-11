@@ -1,14 +1,14 @@
 import CardList from '../card-list/card-list';
 import CitiesLinks from '../cities-links/cities-links';
+import { City, Points, Point } from '../../types/types';
+import { CityTabs, SortPopup } from '../../const';
 import Map from '../map/map';
 import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
 import { useState } from 'react';
-import { City, Points, Point } from '../../types/types';
-import { CityTabs, SortPopup } from '../../const';
+import { useAppSelector } from '../../hooks/index';
 
 type CitiesProps = {
-  placesFound: number;
   offers: Offer[];
   city: City;
   points: Points;
@@ -16,7 +16,9 @@ type CitiesProps = {
   sortPopup: typeof SortPopup;
 }
 
-function Main({ placesFound, offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
+function Main({ offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
+
+  const setCityName = useAppSelector((state) => state.city);
 
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
@@ -29,8 +31,8 @@ function Main({ placesFound, offers, city, points, cityTabs, sortPopup }: Cities
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{placesFound} places to stay in Amsterdam</b>
-            <PlacesSorting sortPopup={SortPopup} />
+            <b className="places__found">{offers.length} places to stay in {setCityName}</b>
+            <PlacesSorting sortPopup={sortPopup} />
             <div className="cities__places-list places__list tabs__content">
               <CardList offers={offers} />
             </div>
