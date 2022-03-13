@@ -13,8 +13,6 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
 
   const dispatch = useAppDispatch();
 
-  // const { city, offers } = useAppSelector((state) => state);
-
   const handleClick = (cityName: string, index: number) => {
     dispatch(setCityName(cityName));
     setActiveItem(index);

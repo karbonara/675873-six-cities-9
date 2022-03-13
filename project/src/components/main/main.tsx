@@ -6,7 +6,7 @@ import Map from '../map/map';
 import { Offer } from '../../types/offer';
 import PlacesSorting from '../places-sorting/places-sorting';
 import { useState } from 'react';
-import { useAppSelector } from '../../hooks/index';
+import { useAppSelector } from '../../hooks';
 
 type CitiesProps = {
   offers: Offer[];
@@ -19,6 +19,12 @@ type CitiesProps = {
 function Main({ offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
 
   const setCityName = useAppSelector((state) => state.city);
+  const setOffer = useAppSelector((state) => state.offers);
+
+  const sortOffers = offers.filter((item) => item.city.name);
+  // const sortOffers = offers.find((item) => item.city.name)?.city.name;
+  // eslint-disable-next-line no-console
+  console.log(sortOffers);
 
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
@@ -31,10 +37,10 @@ function Main({ offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.E
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offers.length} places to stay in {setCityName}</b>
+            <b className="places__found">{setOffer.length} places to stay in {setCityName} </b>
             <PlacesSorting sortPopup={sortPopup} />
             <div className="cities__places-list places__list tabs__content">
-              <CardList offers={offers} />
+              <CardList offers={sortOffers} />
             </div>
           </section>
           <div className="cities__right-section">
