@@ -7,17 +7,17 @@ type SortProps = {
 
 function PlacesSorting({ sortPopup }: SortProps): JSX.Element {
 
-  const [visiblePopup, setvisiblePopup] = useState(false);
+  const [visiblePopup, setVisiblePopup] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
   const activeLabel = sortPopup[activeItem];
 
   const handleVisiblePopup = () => {
-    setvisiblePopup(!visiblePopup);
+    setVisiblePopup(!visiblePopup);
   };
 
   const onSelectItem = (index: SetStateAction<number>) => {
     setActiveItem(index);
-    setvisiblePopup(false);
+    setVisiblePopup(false);
   };
 
   return (
