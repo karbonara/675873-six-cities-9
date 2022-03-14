@@ -19,25 +19,19 @@ type CitiesProps = {
 function Main({ offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
 
   const setCityName = useAppSelector((state) => state.city);
-  const setOffer = useAppSelector((state) => state.offers);
-
-  const sortOffers = offers.filter((item) => item.city.name);
-  // const sortOffers = offers.find((item) => item.city.name)?.city.name;
-  // eslint-disable-next-line no-console
-  console.log(sortOffers);
-
+  const sortOffers = offers.filter((item) => item.city.name.includes(setCityName));
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
   );
 
   return (
     <>
-      <CitiesLinks cityTabs={cityTabs} />
+      <CitiesLinks cityTabs={cityTabs} offers={sortOffers} />
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{setOffer.length} places to stay in {setCityName} </b>
+            <b className="places__found">{sortOffers.length} places to stay in {setCityName} </b>
             <PlacesSorting sortPopup={sortPopup} />
             <div className="cities__places-list places__list tabs__content">
               <CardList offers={sortOffers} />
