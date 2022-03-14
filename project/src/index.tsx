@@ -1,26 +1,28 @@
 import App from './components/app/app';
 import { BrowserRouter } from 'react-router-dom';
+import { CITY } from './mocks/city';
+import { comments } from './mocks/comments';
+import { offers } from './mocks/offers';
+import { Provider } from 'react-redux';
+import { POINTS } from './mocks/points';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { offers } from './mocks/offers';
-import { CITY } from './mocks/city';
-import { POINTS } from './mocks/points';
-import { comments } from './mocks/comments';
-
-const Setting = {
-  PLACES_FOUND: 324,
-};
+import store from './store';
+import { CityTabs, SortPopup } from './const';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App
-        placesFound={Setting.PLACES_FOUND}
-        offers={offers}
-        points={POINTS}
-        city={CITY}
-        comments={comments}
-      />
+      <Provider store={store}>
+        <App
+          offers={offers}
+          points={POINTS}
+          city={CITY}
+          comments={comments}
+          cityTabs={CityTabs}
+          sortPopup={SortPopup}
+        />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'));

@@ -1,4 +1,4 @@
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute, AuthorizationStatus, CityTabs, SortPopup } from '../../const';
 import ErrorPage from '../pages/error-page/error-page';
 import Favorites from '../pages/favorites/favorites';
 import Layout from '../layout/layout';
@@ -12,19 +12,20 @@ import { City, Points } from '../../types/types';
 import { Comment } from '../../types/comment';
 
 type AppCitiesProps = {
-  placesFound: number;
   offers: Offer[];
   city: City;
   points: Points;
   comments: Comment[];
+  cityTabs: typeof CityTabs;
+  sortPopup: typeof SortPopup;
 }
 
-function App({ placesFound, offers, city, points, comments }: AppCitiesProps): JSX.Element {
+function App({ offers, city, points, comments, cityTabs, sortPopup }: AppCitiesProps): JSX.Element {
   return (
     <div>
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route path={AppRoute.Root} element={<Main placesFound={placesFound} offers={offers} city={city} points={points} />} />
+          <Route path={AppRoute.Root} element={<Main offers={offers} city={city} points={points} cityTabs={cityTabs} sortPopup={SortPopup} />} />
           <Route path={AppRoute.Login} element={<Login />} />
           <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} comments={comments} city={city} points={points} />} />
           <Route

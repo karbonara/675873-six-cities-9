@@ -8,6 +8,6 @@ export type Comment = {
     id: number
     isPro: boolean
     name: string
-  }
+  };
 };
 
