@@ -3,6 +3,7 @@ import { useAppDispatch } from '../../hooks';
 import { useState } from 'react';
 import { setCityName } from '../../store/reducer/city-reducer';
 import { Offer } from '../../types/offer';
+
 type CityProps = {
   offers: Offer[];
   cityTabs: typeof CityTabs;
@@ -11,9 +12,7 @@ type CityProps = {
 function CitiesLinks({ cityTabs, offers }: CityProps): JSX.Element {
 
   const [activeItem, setActiveItem] = useState(0);
-
   const dispatch = useAppDispatch();
-
   const handleClick = (cityName: string, index: number) => {
     dispatch(setCityName(cityName));
     setActiveItem(index);
