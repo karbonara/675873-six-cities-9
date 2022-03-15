@@ -1,14 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../store';
-import { store } from '../store';
-import { Questions } from '../types/question';
-import { loadQuestions, requireAuthorization } from './action';
 import { APIRoute } from '../const';
+import { api } from '../store';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import store from '../store';
+import { Offer } from '../types/offer';
+import { loadOffers } from './action';
 
-export const fetchQuestionAction = createAsyncThunk(
-  'data/fetchQuestions',
+export const fetchOffersAction = createAsyncThunk(
+  'data/fetchOffers',
   async () => {
-    const { data } = await api.get<Questions>(APIRoute.Questions);
-    store.dispatch(loadQuestions(data));
+    const { data } = await api.get<Offer>(APIRoute.Offers);
+    store.dispatch(loadOffers(data));
   },
 );
