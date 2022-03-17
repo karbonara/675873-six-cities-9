@@ -1,45 +1,43 @@
 import CardList from '../card-list/card-list';
 import CitiesLinks from '../cities-links/cities-links';
-import { City, Points, Point } from '../../types/types';
 import { CityTabs, SortPopup } from '../../const';
-import Map from '../map/map';
-import { Offer } from '../../types/offer';
+// import Map from '../map/map';
 import PlacesSorting from '../places-sorting/places-sorting';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useAppSelector } from '../../hooks';
+// import { Point, Points } from '../../types/types';
 
 type CitiesProps = {
-  offers: Offer[];
-  city: City;
-  points: Points;
-  cityTabs: typeof CityTabs;
-  sortPopup: typeof SortPopup;
+  // points: Points;
 }
 
-function Main({ offers, city, points, cityTabs, sortPopup }: CitiesProps): JSX.Element {
+function Main(props: CitiesProps): JSX.Element {
 
-  const setCityName = useAppSelector((state) => state.city);
-  const sortOffers = offers.filter((item) => item.city.name.includes(setCityName));
-  const [selectedPoint] = useState<Point | undefined>(
-    undefined,
-  );
+  // const { points } = props;
+
+  const { offers, city } = useAppSelector((state) => state);
+  const sortOffers = offers.filter((item) => item.city.name.includes(city));
+  // const cityLocation = sortOffers[0].city.location;
+  // const [selectedPoint] = useState<Point | undefined>(
+  //   undefined,
+  // );
 
   return (
     <>
-      <CitiesLinks cityTabs={cityTabs} />
+      <CitiesLinks cityTabs={CityTabs} />
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{sortOffers.length} places to stay in {setCityName} </b>
-            <PlacesSorting sortPopup={sortPopup} />
+            <b className="places__found">{sortOffers.length} places to stay in {city} </b>
+            <PlacesSorting sortPopup={SortPopup} />
             <div className="cities__places-list places__list tabs__content">
               <CardList offers={sortOffers} />
             </div>
           </section>
           <div className="cities__right-section">
             <section className="cities__map map">
-              <Map city={city} points={points} selectedPoint={selectedPoint} />
+              {/* <Map city={cityLocation} points={points} selectedPoint={selectedPoint} /> */}
             </section>
           </div>
         </div>
