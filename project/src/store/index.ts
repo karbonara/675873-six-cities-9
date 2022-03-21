@@ -4,7 +4,7 @@ import reducer from './reducer';
 
 export const api = createAPI();
 
-const store = configureStore({
+export const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -13,5 +13,3 @@ const store = configureStore({
       },
     }),
 });
-
-export default store;

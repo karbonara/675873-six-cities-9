@@ -1,4 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
-import { Offer } from '../types/offer';
+import { Offers } from '../types/offer';
 
-export const loadOffers = createAction<Offer>('data/loadOffers');
+export const loadOffers = createAction<Offers>('data/loadOffers');

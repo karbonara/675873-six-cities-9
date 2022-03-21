@@ -7,11 +7,12 @@ import Login from '../pages/login/login';
 import Main from '../main/main';
 import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
-// import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
+import Room from '../pages/room-offer/room';
 // import { useAppSelector } from '../../hooks';
 // import { isCheckedAuth } from '../../utils';
 
 function App(): JSX.Element {
+
   // const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
 
   // if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
@@ -26,8 +27,7 @@ function App(): JSX.Element {
         <Route path='/' element={<Layout />}>
           <Route path={AppRoute.Root} element={<Main />} />
           <Route path={AppRoute.Login} element={<Login />} />
-          {/* <Route path={AppRoute.Room} element={<RoomOfferList offers={offers} comments={comments} city={city} points={points} />} /> */}
-          {/* <Route path={AppRoute.Room} element={<RoomOfferList />} /> */}
+          <Route path={AppRoute.Room} element={<Room />} />
           <Route
             path={AppRoute.Favorites}
             element={

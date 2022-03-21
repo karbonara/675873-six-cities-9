@@ -1,25 +1,31 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { getToken } from './token';
+import axios, { AxiosInstance } from 'axios';
+// import { getToken } from './token';
 
 const BACKEND_URL = 'https://9.react.pages.academy/six-cities';
 const REQUEST_TIMEOUT = 5000;
-export const createAPI = (): AxiosInstance => {
-  const api = axios.create({
-    baseURL: BACKEND_URL,
-    timeout: REQUEST_TIMEOUT,
-  });
 
-  api.interceptors.request.use(
-    (config: AxiosRequestConfig) => {
-      const token = getToken();
+// export const createAPI = (): AxiosInstance => {
+//   const api = axios.create({
+//     baseURL: BACKEND_URL,
+//     timeout: REQUEST_TIMEOUT,
+//   });
 
-      if (token) {
-        config.headers['x-token'] = token;
-      }
+//   api.interceptors.request.use(
+//     (config: AxiosRequestConfig) => {
+//       const token = getToken();
 
-      return config;
-    },
-  );
+//       if (token) {
+//         config.headers['x-token'] = token;
+//       }
 
-  return api;
-};
+//       return config;
+//     },
+//   );
+
+//   return api;
+// };
+
+export const createAPI = (): AxiosInstance => axios.create({
+  baseURL: BACKEND_URL,
+  timeout: REQUEST_TIMEOUT,
+});

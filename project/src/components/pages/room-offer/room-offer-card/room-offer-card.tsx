@@ -1,11 +1,11 @@
-import { Offer } from '../../../types/offer';
-import ReviewsCommentsList from './reviews-comments-list/reviews-comments-list';
-import SubmitCommentForm from '../../submit-comment-form/submit-comment-form';
-import CardList from '../../card-list/card-list';
-import { Comment } from '../../../types/comment';
-import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../const';
-import Map from '../../map/map';
-import { City, Points, Point } from '../../../types/types';
+import { Offer } from '../../../../types/offer';
+import ReviewsCommentsList from '../reviews-comments-list/reviews-comments-list';
+import SubmitCommentForm from '../../../submit-comment-form/submit-comment-form';
+import CardList from '../../../card-list/card-list';
+import { Comment } from '../../../../types/comment';
+import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../../const';
+import Map from '../../../map/map';
+import { City, Points, Point } from '../../../../types/types';
 import { useState } from 'react';
 
 type OfferProps = {
@@ -15,7 +15,7 @@ type OfferProps = {
   points: Points;
 };
 
-function RoomOffer({ offers, comments, city, points }: OfferProps): JSX.Element {
+function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Element {
 
   const offer = offers[0];
   const [selectedPoint] = useState<Point | undefined>(
@@ -139,4 +139,4 @@ function RoomOffer({ offers, comments, city, points }: OfferProps): JSX.Element 
   );
 }
 
-export default RoomOffer;
+export default RoomOfferCard;

@@ -6,6 +6,7 @@ import PlacesSorting from '../places-sorting/places-sorting';
 // import { useState } from 'react';
 import { useAppSelector } from '../../hooks';
 // import { Point, Points } from '../../types/types';
+import { getOffers } from '../../store/selectors';
 
 type CitiesProps = {
   // points: Points;
@@ -14,8 +15,11 @@ type CitiesProps = {
 function Main(props: CitiesProps): JSX.Element {
 
   // const { points } = props;
+  const offers = useAppSelector(getOffers);
+  // eslint-disable-next-line no-console
+  console.log(offers);
 
-  const { offers, city } = useAppSelector((state) => state);
+  const { city } = useAppSelector((state) => state);
   const sortOffers = offers.filter((item) => item.city.name.includes(city));
   // const cityLocation = sortOffers[0].city.location;
   // const [selectedPoint] = useState<Point | undefined>(
