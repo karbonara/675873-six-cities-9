@@ -13,9 +13,7 @@ function Main(): JSX.Element {
   const offers = useAppSelector(getOffers);
   const currentCity = useAppSelector(getCurrentCityName);
 
-  // const CityName = useAppSelector(getCityName);
-  // const { city } = useAppSelector((state) => state);
-  const sortOffers = offers.filter((item) => item.city.name.includes(item.city.name));
+  const sortOffers = offers.filter((item) => item.city.name.includes(currentCity));
 
   // const cityLocation = sortOffers[0].city.location;
   // const [selectedPoint] = useState<Point | undefined>(
@@ -30,7 +28,7 @@ function Main(): JSX.Element {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offers.length} places to stay in {currentCity} </b>
+            <b className="places__found">{sortOffers.length} places to stay in {currentCity} </b>
             <PlacesSorting sortPopup={SortPopup} />
             <div className="cities__places-list places__list tabs__content">
               <CardList offers={sortOffers} />
