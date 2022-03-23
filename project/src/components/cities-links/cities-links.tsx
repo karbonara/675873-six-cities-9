@@ -1,5 +1,5 @@
 import { CityTabs } from '../../const';
-import { setCityName } from '../../store/reducer/city-reducer';
+import { cityTabsActive } from '../../store/action';
 import { useAppDispatch } from '../../hooks';
 import { useState } from 'react';
 
@@ -11,9 +11,10 @@ function CitiesLinks({ cityTabs }: CityProps): JSX.Element {
 
   const [activeItem, setActiveItem] = useState(0);
   const dispatch = useAppDispatch();
+
   const handleClick = (cityName: string, index: number) => {
-    dispatch(setCityName(cityName));
     setActiveItem(index);
+    dispatch(cityTabsActive(cityName));
   };
 
   return (

@@ -1,25 +1,25 @@
-import { AppRoute, AuthorizationStatus } from '../../const';
+import { AppRoute } from '../../const';
 import ErrorPage from '../pages/error-page/error-page';
 import Favorites from '../pages/favorites/favorites';
 import Layout from '../layout/layout';
 import Login from '../pages/login/login';
-// import LoadingScreen from '../loading-screen/loading-screen';
-import Main from '../main/main';
+import Main from '../pages/main/main';
 import PrivateRoute from '../private-route/private-route';
 import { Route, Routes } from 'react-router-dom';
 import Room from '../pages/room-offer/room';
-// import { useAppSelector } from '../../hooks';
-// import { isCheckedAuth } from '../../utils';
+import LoadingScreen from '../loading-screen/loading-screen';
+import { isCheckedAuth } from '../../utils';
+import { useAppSelector } from '../../hooks';
 
 function App(): JSX.Element {
 
-  // const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
+  const { authorizationStatus, isDataLoaded } = useAppSelector((state) => state);
 
-  // if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
-  //   return (
-  //     <LoadingScreen />
-  //   );
-  // }
+  if (isCheckedAuth(authorizationStatus) || !isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
 
   return (
     <div>
@@ -31,7 +31,7 @@ function App(): JSX.Element {
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <PrivateRoute authorizationStatus={authorizationStatus}>
                 <Favorites />
               </PrivateRoute>
             }
