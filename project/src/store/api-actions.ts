@@ -10,7 +10,7 @@ import { dropToken, saveToken } from '../services/token';
 import { errorHandle } from '../services/error-handle';
 
 export const clearErrorAction = createAsyncThunk(
-  'game/clearError',
+  'data/clearError',
   () => {
     setTimeout(
       () => store.dispatch(setError('')),
