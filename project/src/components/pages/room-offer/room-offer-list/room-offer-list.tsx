@@ -1,6 +1,6 @@
 import { Comment } from '../../../../types/comment';
 import { Offer } from '../../../../types/offer';
-import RoomOffer from '../room-offer';
+import RoomOffer from '../room-offer-card/room-offer-card';
 import { City, Points } from '../../../../types/types';
 
 type OfferListProps = {
@@ -10,7 +10,9 @@ type OfferListProps = {
   points: Points;
 };
 
-function RoomOfferList({ offers, comments, city, points }: OfferListProps): JSX.Element {
+// function RoomOfferList({ offers, comments, city, points }: OfferListProps): JSX.Element {
+function RoomOfferList(props: OfferListProps): JSX.Element {
+  const { offers, comments, city, points } = props;
   return (
     <>
       {offers.map((offer) => (
