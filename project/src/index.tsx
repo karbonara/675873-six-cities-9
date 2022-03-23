@@ -1,5 +1,6 @@
 import App from './components/app/app';
 import { BrowserRouter } from 'react-router-dom';
+import ErrorMessage from './components/error-message/error-message';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -13,6 +14,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
+        <ErrorMessage />
         <App />
       </Provider>
     </BrowserRouter>

@@ -19,9 +19,16 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
+}
+
 export const CityTabs = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
 export const SortPopup = ['Popular', 'Price: low to high', 'Price: high to low', 'Top rated first'];
 
+export const TIMEOUT_SHOW_ERROR = 2000;
 export const AVATAR_URL = 'https://i.pravatar.cc/128';
 export const HEIGHT_LOGO = 41;
 export const WIDTH_LOGO = 81;
