@@ -1,20 +1,23 @@
 import App from './components/app/app';
-import { BrowserRouter } from 'react-router-dom';
+import browserHistory from './browser-history';
+import ErrorMessage from './components/error-message/error-message';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { store } from './store';
 import { fetchOffersAction, checkAuthAction } from './store/api-actions';
+import HistoryRouter from './history-route';
 
 store.dispatch(fetchOffersAction());
 store.dispatch(checkAuthAction());
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Provider store={store}>
+        <ErrorMessage />
         <App />
       </Provider>
-    </BrowserRouter>
+    </HistoryRouter>
   </React.StrictMode>,
   document.getElementById('root'));

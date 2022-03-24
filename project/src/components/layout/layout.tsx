@@ -1,7 +1,14 @@
-import { Link, Outlet } from 'react-router-dom';
+import { AuthorizationStatus } from '../../const';
+import { Outlet } from 'react-router-dom';
+import UserLogged from '../user-logged/user-logged';
+import UserNotLogged from '../user-not-logged/user-not-logged';
+import { useAppSelector } from '../../hooks';
 import Logo from '../logo/logo';
 
 function Layout(): JSX.Element {
+
+  const { authorizationStatus } = useAppSelector((state) => state);
+
   return (
     <>
       <header className="header">
@@ -10,23 +17,7 @@ function Layout(): JSX.Element {
             <div className="header__left">
               <Logo />
             </div>
-            <nav className="header__nav">
-              <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="/">
-                    <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-                    <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
-                    </span>
-                  </a>
-                </li>
-                <li className="header__nav-item">
-                  <Link className="header__nav-link" to="login">
-                    <span className="header__signout">Sign out</span>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+            {authorizationStatus === AuthorizationStatus.Auth ? <UserNotLogged /> : <UserLogged />}
           </div>
         </div>
       </header>

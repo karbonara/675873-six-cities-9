@@ -1,13 +1,23 @@
-import { APIRoute, AuthorizationStatus } from '../const';
+import { APIRoute, AppRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../const';
 import { api } from '../store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { store } from '../store';
 import { Offers } from '../types/offer';
-import { loadOffers, requireAuthorization } from './action';
+import { loadOffers, redirectToRoute, requireAuthorization, setError } from './action';
+import { AuthData } from '../types/auth-data';
+import { UserData } from '../types/user-data';
+import { dropToken, saveToken } from '../services/token';
+import { errorHandle } from '../services/error-handle';
 
-function errorHandle(err: unknown) {
-  throw new Error('Function not implemented.');
-}
+export const clearErrorAction = createAsyncThunk(
+  'data/clearError',
+  () => {
+    setTimeout(
+      () => store.dispatch(setError('')),
+      TIMEOUT_SHOW_ERROR,
+    );
+  },
+);
 
 export const fetchOffersAction = createAsyncThunk(
   'data/loadOffers',
@@ -29,7 +39,34 @@ export const checkAuthAction = createAsyncThunk(
       store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
     } catch (error) {
       errorHandle(error);
+    }
+  },
+);
+
+export const loginAction = createAsyncThunk(
+  'user/login',
+  async ({ login: email, password }: AuthData) => {
+    try {
+      const { data: { token } } = await api.post<UserData>(APIRoute.Login, { email, password });
+      saveToken(token);
+      store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      store.dispatch(redirectToRoute(AppRoute.Root));
+    } catch (error) {
+      errorHandle(error);
       store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    }
+  },
+);
+
+export const logoutAction = createAsyncThunk(
+  'user/logout',
+  async () => {
+    try {
+      await api.delete(APIRoute.Logout);
+      dropToken();
+      store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));
+    } catch (error) {
+      errorHandle(error);
     }
   },
 );
