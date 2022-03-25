@@ -3,7 +3,8 @@ import { api } from '../store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { store } from '../store';
 import { Offers } from '../types/offer';
-import { loadOffers, redirectToRoute, requireAuthorization, setError } from './action';
+import { Comments } from '../types/comment';
+import { loadOffers, loadOffer, redirectToRoute, requireAuthorization, setError, loadComments } from './action';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
@@ -25,6 +26,30 @@ export const fetchOffersAction = createAsyncThunk(
     try {
       const { data } = await api.get<Offers>(APIRoute.Offers);
       store.dispatch(loadOffers(data));
+    } catch (err) {
+      errorHandle(err);
+    }
+  },
+);
+
+export const fetchOfferAction = createAsyncThunk(
+  'data/loadOffer',
+  async (hotelId: string) => {
+    try {
+      const { data } = await api.get<Offers>(`${APIRoute.Offers} ${hotelId}`);
+      store.dispatch(loadOffer(data));
+    } catch (err) {
+      errorHandle(err);
+    }
+  },
+);
+
+export const fetchCommentsAction = createAsyncThunk(
+  'data/loadComments',
+  async (hotelId: string) => {
+    try {
+      const { data } = await api.get<Comments>(`${APIRoute.Comments}${hotelId}`);
+      store.dispatch(loadComments(data));
     } catch (err) {
       errorHandle(err);
     }

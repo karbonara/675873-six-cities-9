@@ -47,6 +47,7 @@ function Map(props: MapProps): JSX.Element {
       });
     }
   }, [map, points, selectedPoint]);
+
   return <div style={{ height: MAP_HEIGHT }} ref={mapRef} />;
 }
 

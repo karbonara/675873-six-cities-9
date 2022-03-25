@@ -7,6 +7,8 @@ import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../../const';
 import Map from '../../../map/map';
 import { City, Points, Point } from '../../../../types/types';
 import { useState } from 'react';
+import { useAppSelector } from '../../../../hooks';
+import { getComments } from '../../../../store/selectors';
 
 type OfferProps = {
   offers: Offer[];
@@ -17,10 +19,11 @@ type OfferProps = {
 
 function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Element {
 
-  const offer = offers[0];
+  const offer = offers[7];
   const [selectedPoint] = useState<Point | undefined>(
     undefined,
   );
+  const commentsItems = useAppSelector(getComments);
 
   return (
     <>
@@ -118,7 +121,7 @@ function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Elem
               <h2 className="reviews__title">
                 Reviews · <span className="reviews__amount">1</span>
               </h2>
-              <ReviewsCommentsList comments={comments} />
+              <ReviewsCommentsList comments={commentsItems} />
               <SubmitCommentForm />
             </section>
           </div>

@@ -11,3 +11,4 @@ export type Comment = {
   };
 };
 
+export type Comments = Comment[];

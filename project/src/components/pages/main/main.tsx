@@ -1,12 +1,12 @@
 import CardList from '../../card-list/card-list';
 import CitiesLinks from '../../cities-links/cities-links';
 import { CityTabs, SortPopup } from '../../../const';
-// import Map from '../../map/map';
+import Map from '../../map/map';
 import PlacesSorting from '../../places-sorting/places-sorting';
 import { useAppSelector } from '../../../hooks';
 import { getOffers, getCurrentCityName } from '../../../store/selectors';
-// import { useState } from 'react';
-// import { Point } from '../../../types/types';
+import { useState } from 'react';
+import { Point } from '../../../types/types';
 
 function Main(): JSX.Element {
 
@@ -16,9 +16,9 @@ function Main(): JSX.Element {
   const sortOffers = offers.filter((item: { city: { name: string | unknown[]; }; }) => item.city.name.includes(currentCity));
 
   // const cityLocation = sortOffers[0].city.location;
-  // const [selectedPoint] = useState<Point | undefined>(
-  //   undefined,
-  // );
+  const [selectedPoint] = useState<Point | undefined>(
+    undefined,
+  );
   // const points = offers.map((offer) => ({ ...offer.location, id: offer.id }));
 
   return (
@@ -37,7 +37,7 @@ function Main(): JSX.Element {
           <div className="cities__right-section">
             <section className="cities__map map">
               {/* <Map city={city} points={points} selectedPoint={selectedPoint} /> */}
-              {/* <Map points={points} selectedPoint={selectedPoint} /> */}
+              <Map selectedPoint={selectedPoint} city={{ title: '', lat: 0, lng: 0, zoom: 0 }} points={[]} />
             </section>
           </div>
         </div>

@@ -2,7 +2,8 @@ export enum AppRoute {
   Root = '',
   Login = '/login',
   Favorites = '/favorites',
-  Room = '/offer/:id',
+  Room = '/offer/',
+  RoomId = '/offer/:id',
 }
 
 export enum APIRoute {
