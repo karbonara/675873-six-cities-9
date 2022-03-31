@@ -7,6 +7,7 @@ type CommentProps = {
 
 function ReviewsComments({ comments }: CommentProps): JSX.Element {
   const { comment, rating, user, date } = comments;
+
   return (
     <li className="reviews__item">
       <div className="reviews__user user">

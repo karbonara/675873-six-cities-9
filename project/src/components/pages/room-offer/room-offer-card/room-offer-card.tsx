@@ -1,41 +1,45 @@
-import { Offer } from '../../../../types/offer';
+import { AuthorizationStatus } from '../../../../const';
+import CardList from '../../../card-list/card-list';
 import ReviewsCommentsList from '../reviews-comments-list/reviews-comments-list';
 import SubmitCommentForm from '../../../submit-comment-form/submit-comment-form';
-import CardList from '../../../card-list/card-list';
-import { Comment } from '../../../../types/comment';
 import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../../const';
-import Map from '../../../map/map';
-import { City, Points, Point } from '../../../../types/types';
-import { useState } from 'react';
+// import Map from '../../../map/map';
+// import { City, Points, Point } from '../../../../types/types';
 import { useAppSelector } from '../../../../hooks';
-import { getComments } from '../../../../store/selectors';
+import { useParams } from 'react-router-dom';
+import { Comment } from '../../../../types/comment';
 
-type OfferProps = {
-  offers: Offer[];
-  comments: Comment[];
-  city: City;
-  points: Points;
-};
+// type OfferProps = {
+//   offers: Offer[];
+//   comments: Comment[];
+//   city: City;
+//   points: Points;
+// };
 
-function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Element {
+function RoomOfferCard(): JSX.Element {
 
-  const offer = offers[7];
-  const [selectedPoint] = useState<Point | undefined>(
-    undefined,
-  );
-  const commentsItems = useAppSelector(getComments);
+  const { authorizationStatus } = useAppSelector((state) => state);
+  const params = Number(useParams().id);
+  const offers = useAppSelector((state) => state.offers);
+  // const commentsItems = useAppSelector((state) => state.comments);
+  const commentsItems: Comment[] = useAppSelector((state) => state.comments);
+  const offerItem = offers.filter((offer) => offer.id === params)[0];
+
+  // const [selectedPoint] = useState<Point | undefined>(
+  //   undefined,
+  // );
 
   return (
     <>
       <section className="property" >
         <div className="property__gallery-container container">
           <div className="property__gallery">
-            {offer.images.map((img) => (
+            {offerItem.images.map((img) => (
               <div
                 key={img}
                 className="property__image-wrapper"
               >
-                <img className="property__image" src={img} alt={offer.title} />
+                <img className="property__image" src={img} alt={offerItem.title} />
               </div>
             ))}
           </div>
@@ -43,14 +47,14 @@ function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Elem
         <div className="property__container container">
           <div className="property__wrapper">
             {
-              offer.isPremium &&
+              offerItem.isPremium &&
               <div className="property__mark">
                 <span>Premium</span>
               </div>
             }
             <div className="property__name-wrapper">
               <h1 className="property__name">
-                {offer.title}
+                {offerItem.title}
               </h1>
               <button className="property__bookmark-button button" type="button">
                 <svg className="property__bookmark-icon" width={31} height={33}>
@@ -61,31 +65,31 @@ function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Elem
             </div>
             <div className="property__rating rating">
               <div className="property__stars rating__stars">
-                <span style={{ width: `${offer.rating * STYLE_RATING}%` }} />
+                <span style={{ width: `${offerItem.rating * STYLE_RATING}%` }} />
                 <span className="visually-hidden">Rating</span>
               </div>
-              <span className="property__rating-value rating__value">{offer.rating}</span>
+              <span className="property__rating-value rating__value">{offerItem.rating}</span>
             </div>
             <ul className="property__features">
               <li className="property__feature property__feature--entire">
-                {offer.type}
+                {offerItem.type}
               </li>
               <li className="property__feature property__feature--bedrooms">
-                {offer.bedrooms} Bedrooms
+                {offerItem.bedrooms} Bedrooms
               </li>
               <li className="property__feature property__feature--adults">
-                Max {offer.maxAdults} adults
+                Max {offerItem.maxAdults} adults
               </li>
             </ul>
             <div className="property__price">
-              <b className="property__price-value">€{offer.price}</b>
+              <b className="property__price-value">€{offerItem.price}</b>
               <span className="property__price-text">&nbsp;night</span>
             </div>
             <div className="property__inside">
               <h2 className="property__inside-title">What`s inside</h2>
               <ul className="property__inside-list">
                 {
-                  offer.goods.map((insides) => (
+                  offerItem.goods.map((insides) => (
                     <li key={insides} className="property__inside-item">
                       {insides}
                     </li>
@@ -99,35 +103,35 @@ function RoomOfferCard({ offers, comments, city, points }: OfferProps): JSX.Elem
                 <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
                   <img
                     className="property__avatar user__avatar"
-                    src={offer.host.avatarUrl}
+                    src={offerItem.host.avatarUrl}
                     width={PROPERTY_USER_AVATAR}
                     height={PROPERTY_USER_AVATAR}
-                    alt={offer.host.name}
+                    alt={offerItem.host.name}
                   />
                 </div>
-                <span className="property__user-name">{offer.host.name}</span>
+                <span className="property__user-name">{offerItem.host.name}</span>
                 {
-                  offer.host.isPro &&
+                  offerItem.host.isPro &&
                   <span className="property__user-status">Pro</span>
                 }
               </div>
               <div className="property__description">
                 <p className="property__text">
-                  {offer.description}
+                  {offerItem.description}
                 </p>
               </div>
             </div>
             <section className="property__reviews reviews">
               <h2 className="reviews__title">
-                Reviews · <span className="reviews__amount">1</span>
+                Reviews · <span className="reviews__amount">{commentsItems.length}</span>
               </h2>
               <ReviewsCommentsList comments={commentsItems} />
-              <SubmitCommentForm />
+              {authorizationStatus === AuthorizationStatus.Auth ? <SubmitCommentForm /> : ''}
             </section>
           </div>
         </div>
         <section className="property__map map">
-          <Map city={city} points={points} selectedPoint={selectedPoint} />
+          {/* <Map city={city} points={points} selectedPoint={selectedPoint} /> */}
         </section>
       </section>
       <div className="container">

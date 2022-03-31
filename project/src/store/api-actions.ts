@@ -36,7 +36,7 @@ export const fetchOfferAction = createAsyncThunk(
   'data/loadOffer',
   async (hotelId: string) => {
     try {
-      const { data } = await api.get<Offers>(`${APIRoute.Offers} ${hotelId}`);
+      const { data } = await api.get<Offers>(`${APIRoute.Offers}/${hotelId}`);
       store.dispatch(loadOffer(data));
     } catch (err) {
       errorHandle(err);
@@ -48,7 +48,7 @@ export const fetchCommentsAction = createAsyncThunk(
   'data/loadComments',
   async (hotelId: string) => {
     try {
-      const { data } = await api.get<Comments>(`${APIRoute.Comments}${hotelId}`);
+      const { data } = await api.get<Comments>(`${APIRoute.Comments}/${hotelId}`);
       store.dispatch(loadComments(data));
     } catch (err) {
       errorHandle(err);

@@ -13,7 +13,7 @@ function Main(): JSX.Element {
   const offers = useAppSelector(getOffers);
   const currentCity = useAppSelector(getCurrentCityName);
 
-  const sortOffers = offers.filter((item: { city: { name: string | unknown[]; }; }) => item.city.name.includes(currentCity));
+  const sortOffers = offers.filter((item) => item.city.name.includes(currentCity));
 
   // const cityLocation = sortOffers[0].city.location;
   const [selectedPoint] = useState<Point | undefined>(

@@ -10,6 +10,7 @@ import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { isCheckedAuth } from '../../utils';
 import { useAppSelector } from '../../hooks';
+// import RoomOfferCard from '../pages/room-offer/room-offer-card/room-offer-card';
 
 function App(): JSX.Element {
 
@@ -22,24 +23,22 @@ function App(): JSX.Element {
   }
 
   return (
-    <div>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route path={AppRoute.Root} element={<Main />} />
-          <Route path={AppRoute.Login} element={<Login />} />
-          <Route path={AppRoute.RoomId} element={<RoomOfferList city={{ title: '', lat: 0, lng: 0, zoom: 0 }} points={[]} comments={[]} />} />
-          <Route
-            path={AppRoute.Favorites}
-            element={
-              <PrivateRoute authorizationStatus={authorizationStatus}>
-                <Favorites />
-              </PrivateRoute>
-            }
-          />
-        </Route>
-        <Route path='*' element={<ErrorPage />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route path={AppRoute.Root} element={<Main />} />
+        <Route path={AppRoute.Login} element={<Login />} />
+        <Route path={AppRoute.RoomId} element={<RoomOfferList />} />
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={authorizationStatus}>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+      </Route>
+      <Route path='*' element={<ErrorPage />} />
+    </Routes>
   );
 }
 
