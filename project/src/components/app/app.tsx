@@ -10,7 +10,6 @@ import RoomOfferList from '../pages/room-offer/room-offer-list/room-offer-list';
 import LoadingScreen from '../loading-screen/loading-screen';
 import { isCheckedAuth } from '../../utils';
 import { useAppSelector } from '../../hooks';
-// import RoomOfferCard from '../pages/room-offer/room-offer-card/room-offer-card';
 
 function App(): JSX.Element {
 

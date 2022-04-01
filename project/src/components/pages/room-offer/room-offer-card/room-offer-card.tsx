@@ -9,19 +9,11 @@ import { useAppSelector } from '../../../../hooks';
 import { useParams } from 'react-router-dom';
 import { Comment } from '../../../../types/comment';
 
-// type OfferProps = {
-//   offers: Offer[];
-//   comments: Comment[];
-//   city: City;
-//   points: Points;
-// };
-
 function RoomOfferCard(): JSX.Element {
 
   const { authorizationStatus } = useAppSelector((state) => state);
   const params = Number(useParams().id);
   const offers = useAppSelector((state) => state.offers);
-  // const commentsItems = useAppSelector((state) => state.comments);
   const commentsItems: Comment[] = useAppSelector((state) => state.comments);
   const offerItem = offers.filter((offer) => offer.id === params)[0];
 
