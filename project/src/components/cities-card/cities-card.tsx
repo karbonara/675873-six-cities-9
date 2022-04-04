@@ -4,12 +4,13 @@ import { STYLE_RATING } from '../../const';
 
 type OfferProps = {
   offer: Offer;
+  onCardHover?: (id: number) => void;
 };
 
-function CitiesCard({ offer }: OfferProps): JSX.Element {
-  const { type, price, previewImage, title, rating } = offer;
+function CitiesCard({ offer, onCardHover }: OfferProps): JSX.Element {
+  const { type, price, previewImage, title, rating, id } = offer;
   return (
-    <article className="cities__place-card place-card">
+    <article className="cities__place-card place-card" onMouseEnter={() => onCardHover?.(id)}>
       {
         offer.isPremium &&
         <div className="place-card__mark">

@@ -1,24 +1,24 @@
 import CitiesCard from '../cities-card/cities-card';
 import { Offer } from '../../types/offer';
+import { OFFERS_FROM, OFFERS_TO } from '../../const';
 
-type OfferListProps = {
+type NearPlacesProps = {
   offers: Offer[];
-  onCardHover?: (id: number) => void;
-};
+}
 
-function CardList({ offers, onCardHover }: OfferListProps): JSX.Element {
+function NearPlaces({ offers }: NearPlacesProps): JSX.Element {
   return (
     <>
       {offers
-        .map((offer) => (
+        .slice(OFFERS_FROM, OFFERS_TO)
+        .map((offer: Offer) => (
           <CitiesCard
             key={offer.id}
             offer={offer}
-            onCardHover={onCardHover}
           />
         ))}
     </>
   );
 }
 
-export default CardList;
+export default NearPlaces;

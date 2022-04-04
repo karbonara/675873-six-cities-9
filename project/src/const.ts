@@ -40,3 +40,5 @@ export const ICON_SIZE = 40;
 export const ICON_ANCHOR = 20;
 export const REVIEWS_USER_AVATAR = 54;
 export const PROPERTY_USER_AVATAR = 74;
+export const OFFERS_FROM = 0;
+export const OFFERS_TO = 3;

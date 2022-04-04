@@ -1,6 +1,16 @@
 import { useState, FormEvent } from 'react';
+import { useAppDispatch } from '../../hooks';
+import { postCommentsAction } from '../../store/action';
 
-function SubmitCommentForm(): JSX.Element {
+type CommentsFormProps = {
+  offerId: number,
+}
+
+function SubmitCommentForm({ offerId }: CommentsFormProps): JSX.Element {
+
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
+  const dispatch = useAppDispatch();
 
   const onClickSubmit = () => {
     setFormData({
@@ -15,8 +25,18 @@ function SubmitCommentForm(): JSX.Element {
   });
 
   const fieldChangeHandle = (evt: FormEvent<EventTarget>) => {
+    evt.preventDefault();
+    dispatch(postCommentsAction({
+      comment,
+      rating,
+      offerId,
+    }));
+
     const { name, value } = evt.target as HTMLInputElement;
     setFormData({ ...formData, [name]: value });
+
+    setRating(0);
+    setComment('');
   };
 
   const isFormDisabled = () => !!formData.rating && !!formData.review;
@@ -142,4 +162,3 @@ function SubmitCommentForm(): JSX.Element {
 }
 
 export default SubmitCommentForm;
-

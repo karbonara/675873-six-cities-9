@@ -36,7 +36,7 @@ export const fetchOfferAction = createAsyncThunk(
   'data/loadOffer',
   async (hotelId: string) => {
     try {
-      const { data } = await api.get<Offers>(`${APIRoute.Offers}/${hotelId}`);
+      const { data } = await api.get<Offers>(`${APIRoute.Offers}/${hotelId}/nearby`);
       store.dispatch(loadOffer(data));
     } catch (err) {
       errorHandle(err);
@@ -52,6 +52,18 @@ export const fetchCommentsAction = createAsyncThunk(
       store.dispatch(loadComments(data));
     } catch (err) {
       errorHandle(err);
+    }
+  },
+);
+
+export const postCommentsAction = createAsyncThunk(
+  'user/postComment',
+  async (params: { data: { comment: string, rating: number }, offerId: number }) => {
+    try {
+      const { data, offerId } = params;
+      await api.post<Comment[]>(`${APIRoute.Comments}/${offerId.toString()}`, data);
+    } catch (error) {
+      errorHandle(error);
     }
   },
 );

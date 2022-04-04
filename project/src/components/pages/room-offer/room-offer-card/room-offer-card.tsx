@@ -1,5 +1,4 @@
 import { AuthorizationStatus } from '../../../../const';
-import CardList from '../../../card-list/card-list';
 import ReviewsCommentsList from '../reviews-comments-list/reviews-comments-list';
 import SubmitCommentForm from '../../../submit-comment-form/submit-comment-form';
 import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../../const';
@@ -7,19 +6,24 @@ import { STYLE_RATING, PROPERTY_USER_AVATAR } from '../../../../const';
 // import { City, Points, Point } from '../../../../types/types';
 import { useAppSelector } from '../../../../hooks';
 import { useParams } from 'react-router-dom';
-import { Comment } from '../../../../types/comment';
+import NearPlaces from '../../../near-places/near-places';
+import { useEffect } from 'react';
+import { store } from '../../../../store';
+import { fetchCommentsAction } from '../../../../store/api-actions';
 
 function RoomOfferCard(): JSX.Element {
 
   const { authorizationStatus } = useAppSelector((state) => state);
   const params = Number(useParams().id);
   const offers = useAppSelector((state) => state.offers);
-  const commentsItems: Comment[] = useAppSelector((state) => state.comments);
+  const comments = useAppSelector((state) => state.comments);
   const offerItem = offers.filter((offer) => offer.id === params)[0];
-
   // const [selectedPoint] = useState<Point | undefined>(
   //   undefined,
   // );
+  useEffect(() => {
+    store.dispatch(fetchCommentsAction(params));
+  }, [params, comments]);
 
   return (
     <>
@@ -115,10 +119,11 @@ function RoomOfferCard(): JSX.Element {
             </div>
             <section className="property__reviews reviews">
               <h2 className="reviews__title">
-                Reviews · <span className="reviews__amount">{commentsItems.length}</span>
+                Reviews · <span className="reviews__amount">{comments.length}</span>
               </h2>
-              <ReviewsCommentsList comments={commentsItems} />
-              {authorizationStatus === AuthorizationStatus.Auth ? <SubmitCommentForm /> : ''}
+              <ReviewsCommentsList comments={comments} />
+              <SubmitCommentForm offerId={params} />
+              {authorizationStatus === AuthorizationStatus.Auth ? <SubmitCommentForm offerId={params} /> : ''}
             </section>
           </div>
         </div>
@@ -130,7 +135,7 @@ function RoomOfferCard(): JSX.Element {
         <section className="near-places places">
           <h2 className="near-places__title">Other places in the neighbourhood</h2>
           <div className="near-places__list places__list">
-            <CardList offers={offers} />
+            <NearPlaces offers={offers} />
           </div>
         </section>
       </div>
